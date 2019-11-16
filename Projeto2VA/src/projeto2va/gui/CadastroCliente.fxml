@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto2va.gui.CadastroClienteController">
+   <children>
+      <Label fx:id="label" layoutX="75.0" layoutY="46.0" prefHeight="46.0" prefWidth="375.0" text="                Cadastro Cliente" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="alertaLogin" layoutX="196.0" layoutY="120.0" prefHeight="25.0" prefWidth="398.0" text="message">
+         <font>
+            <Font name="Serif Regular" size="19.0" />
+         </font></Label>
+      <VBox layoutX="20.0" layoutY="92.0" prefHeight="240.0" prefWidth="163.0" spacing="10.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="Login" promptText="insira seu Login" />
+            <Text fx:id="text1" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="nome" promptText="insira nome" />
+            <Text fx:id="text2" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="senha" promptText="insira a senha" />
+            <Button fx:id="botaoconfirma" mnemonicParsing="false" onAction="#cadastrarButton" text="Confirmar" />
+         </children>
+      </VBox>
+      <Label fx:id="confirmacaoCadastro" layoutX="196.0" layoutY="320.0" prefHeight="17.0" prefWidth="243.0" text="message">
+         <font>
+            <Font name="Serif Regular" size="19.0" />
+         </font>
+      </Label>
+      <Button fx:id="voltarTela" layoutX="499.0" layoutY="329.0" mnemonicParsing="false" text="Voltar" />
+   </children>
+</AnchorPane>

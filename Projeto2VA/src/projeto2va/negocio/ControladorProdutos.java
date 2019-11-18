@@ -1,5 +1,6 @@
 
 package projeto2va.negocio;
+import java.util.ArrayList;
 import projeto2va.dados.*;
 import java.util.List;
 import projeto2va.exceptions.*;
@@ -59,6 +60,16 @@ public class ControladorProdutos {
         throw new ElementoNaoExisteException(nome);     
     }
     
+    public ArrayList<Produto> listarPorTipo(String tipo) {
+        ArrayList<Produto> lista = new ArrayList<>();
+        if(tipo!= null) {
+            for(Produto p : this.repositorioProdutos.listar()) {
+                if(p.getTipo().equals(tipo))
+                    lista.add(p);
+            }
+        }
+        return lista;
+    }
     
     
     

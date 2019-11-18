@@ -34,6 +34,8 @@ public class Produto implements Serializable {
         this.preco = preco;
     }
     
-
+    public String getTipo() {
+        return this.tipo;
+    }
     
 }

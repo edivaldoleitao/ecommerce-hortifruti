@@ -1,4 +1,3 @@
-
 package projeto2va.negocio.beans;
 
 import java.io.Serializable;
@@ -7,12 +6,12 @@ import java.util.ArrayList;
 
 
 public class NotaFiscal implements Serializable{
-    private String id;
+    private String idCliente;
     private ArrayList<Produto> compras;
     private LocalDate dataCompra;
  
     public NotaFiscal(String id) {
-        this.id = id;
+        this.idCliente = id;
         this.dataCompra = LocalDate.now();
     }
     
@@ -32,8 +31,14 @@ public class NotaFiscal implements Serializable{
         return total;
     }
     
+    public String getIdCliente() {
+        return this.idCliente;
+    }
+    
+  
+    
     public String toString() {
-        String s = "id cliente :" + this.id + "\n";
+        String s = "id cliente :" + this.idCliente + "\n";
         s += "data compra: " + this.dataCompra + "\n ";
         for(Produto p : this.compras) {
             s += "nome produto " + p.getNome() + " preco" + p.getPreco() + "\n";

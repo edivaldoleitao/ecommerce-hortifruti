@@ -37,5 +37,11 @@ public class Produto implements Serializable {
     public String getTipo() {
         return this.tipo;
     }
+
+    @Override
+    public String toString() {
+        return "Produto{" + "nome=" + nome + ", preco=" + preco + ", tipo=" + tipo + '}';
+    }
+    
     
 }

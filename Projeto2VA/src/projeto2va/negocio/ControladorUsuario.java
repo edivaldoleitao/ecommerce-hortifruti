@@ -1,6 +1,7 @@
 
 package projeto2va.negocio;
 
+import java.util.ArrayList;
 import projeto2va.dados.IRepositorioGenerico;
 import projeto2va.dados.RepositorioGenerico;
 import java.util.List;
@@ -11,6 +12,7 @@ import projeto2va.exceptions.SenhaIncorretaException;
 import projeto2va.exceptions.UsuarioInexistenteException;
 import projeto2va.negocio.beans.ContaCliente;
 import projeto2va.negocio.beans.ContaUsuario;
+import projeto2va.exceptions.UsuarioBloqueadoException;
 
 public class ControladorUsuario {
     
@@ -54,14 +56,17 @@ public class ControladorUsuario {
     }
     
     //metodo  login
-    public ContaCliente LoginCliente(String login,String senha) throws ElementoNaoExisteException, SenhaIncorretaException, UsuarioInexistenteException{
+    public ContaCliente LoginCliente(String login,String senha) throws ElementoNaoExisteException, SenhaIncorretaException, UsuarioInexistenteException,UsuarioBloqueadoException{
         
         List<ContaUsuario> lista = this.repositorioUsuarios.listar();
         if(login!= null && senha!= null) {
             for(ContaUsuario conta : lista) {
                 if(conta.getLogin().equals(login) ) {
-                    if( conta.getSenha().equals(senha)) {
+                    if( conta.getSenha().equals(senha) ) {
+                        if(!((ContaCliente)conta).getStatusBloqueio())
                         return (ContaCliente) conta;
+                        else 
+                            throw new UsuarioBloqueadoException(conta);
                     }
                     else {
                         throw new SenhaIncorretaException(conta);
@@ -73,35 +78,42 @@ public class ControladorUsuario {
     }
     
     //metodo client
-    public void alterarSenha(ContaUsuario conta ,String senha) {
+    public void alterarSenha(ContaUsuario conta ,String senha) throws ElementoNaoExisteException{
         if(conta!= null && senha!= null) {
             conta.setSenha(senha);
-        }
+            this.repositorioUsuarios.atualizar(conta);
+        }   
     } 
     // metodo do admin
-    public void bloquearUsuario(ContaCliente conta) {
+    public void bloquearUsuario(ContaCliente conta) throws ElementoNaoExisteException{
         List<ContaUsuario> lista = this.repositorioUsuarios.listar();
         if(conta!= null) {
             if(lista.contains(conta))
               conta.setBloqueio(true);
+            this.repositorioUsuarios.atualizar(conta);
         }
     }
     // metodo do admin
-    public void desbloquearUsuario(ContaCliente conta) {
+    public void desbloquearUsuario(ContaCliente conta) throws ElementoNaoExisteException{
         List<ContaUsuario> lista = this.repositorioUsuarios.listar();
         if(conta!= null) {
             if(lista.contains(conta))
               conta.setBloqueio(false);
+            this.repositorioUsuarios.atualizar(conta);
         }
     }
     
-    public void atualizarUsuario(ContaCliente conta) throws ElementoNaoExisteException{
-        this.repositorioUsuarios.atualizar(conta);
-    }
-////////////////////////////////////////////////////////////////////////////qlklklkllklklklklklk
-    public ContaCliente buscarPorId(double id) {
-        ContaCliente ContaCliente;
-        return  ContaCliente = null;
+
+    public ArrayList<ContaCliente> listarClientes() throws ElementoNaoExisteException{
+        ArrayList<ContaCliente> lista = new ArrayList<>() ;
+        for(ContaUsuario conta : this.repositorioUsuarios.listar()) {
+            if(conta instanceof ContaCliente)
+                lista.add(((ContaCliente)conta));
+        }
+        if(lista.isEmpty())
+            throw new ElementoNaoExisteException("");
+        else 
+            return lista;
     }
 
 

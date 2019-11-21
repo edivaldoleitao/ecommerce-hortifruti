@@ -32,15 +32,23 @@ public class ControladorProdutos {
             }
             if(!existe)
                 this.repositorioProdutos.inserir(produto);
+            else 
+                throw new ElementoJaExisteException(produto);
         }
     }
     
     public void removerProdutos(Produto produto) throws ElementoNaoExisteException{
         if(produto!= null){
-            this.repositorioProdutos.remover(produto);
+            Produto p = null; 
+            for(Produto p1 : this.repositorioProdutos.listar()) {
+                if(p1.getNome().equals(produto.getNome()) && p1.getPreco() == produto.getPreco())
+                    p = p1;
+            }
+            this.repositorioProdutos.remover(p);
         }
     }
   
+    
     public void alterarPreco(Produto produto, float preco) throws ElementoNaoExisteException {
         if(produto!= null) {
             produto.setPreco(preco);
@@ -71,7 +79,9 @@ public class ControladorProdutos {
         return lista;
     }
     
-    
+    public List<Produto> listarProdutos() {
+        return this.repositorioProdutos.listar();
+    }
     
     
 }

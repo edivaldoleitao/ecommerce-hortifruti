@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Win10/Documents/NetBeansProjects/E-commerce/Projeto2VA/src/projeto2va/negocio/ControladorProdutos.java</file>
+            <file>file:/C:/Users/Win10/Documents/NetBeansProjects/E-commerce/Projeto2VA/src/projeto2va/gui/TelaClienteController.java</file>
+            <file>file:/C:/Users/Win10/Documents/NetBeansProjects/E-commerce/Projeto2VA/src/projeto2va/negocio/beans/ContaCliente.java</file>
             <file>file:/C:/Users/Win10/Documents/NetBeansProjects/E-commerce/Projeto2VA/src/projeto2va/negocio/ControladorNotaFiscal.java</file>
-            <file>file:/C:/Users/Win10/Documents/NetBeansProjects/E-commerce/Projeto2VA/src/projeto2va/Projeto2VA.java</file>
+            <file>file:/C:/Users/Win10/Documents/NetBeansProjects/E-commerce/Projeto2VA/src/projeto2va/gui/MainScreenController.java</file>
+            <file>file:/C:/Users/Win10/Documents/NetBeansProjects/E-commerce/Projeto2VA/src/projeto2va/gui/LoginClienteController.java</file>
             <file>file:/C:/Users/Win10/Documents/NetBeansProjects/E-commerce/Projeto2VA/src/projeto2va/negocio/beans/NotaFiscal.java</file>
+            <file>file:/C:/Users/Win10/Documents/NetBeansProjects/E-commerce/Projeto2VA/src/projeto2va/gui/ScreenManager.java</file>
         </group>
     </open-files>
 </project-private>

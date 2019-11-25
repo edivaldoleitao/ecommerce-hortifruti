@@ -4,21 +4,34 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto2va.gui.LoginClienteController">
    <children>
-      <Label id="label" fx:id="label" layoutX="191.0" layoutY="48.0" prefHeight="46.0" prefWidth="192.0" text=" Login Cliente">
+      <Label id="label" fx:id="label" layoutX="222.0" layoutY="42.0" prefHeight="46.0" prefWidth="192.0" text=" Login Cliente">
          <font>
-            <Font size="27.0" />
+            <Font size="21.0" />
          </font>
       </Label>
-      <TextField id="login" fx:id="login" layoutX="198.0" layoutY="128.0" promptText="insira o login" />
-      <TextField fx:id="senha" layoutX="198.0" layoutY="188.0" promptText="insira a senha" />
-      <Button id="botaoConfirma" fx:id="botaoconfirma" layoutX="236.0" layoutY="232.0" mnemonicParsing="false" text="Confirmar" />
-      <Label fx:id="alerta" layoutX="164.0" layoutY="290.0" prefHeight="17.0" prefWidth="270.0" />
-      <Text fx:id="text1" layoutX="198.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" wrappingWidth="37.13671875" />
-      <Text fx:id="text2" layoutX="198.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" />
+      <Label fx:id="alertasenha" layoutX="203.0" layoutY="236.0" prefHeight="17.0" prefWidth="230.0" text="message">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <VBox layoutX="45.0" layoutY="144.0" prefHeight="200.0" prefWidth="133.0" spacing="10.0">
+         <children>
+            <Text fx:id="text1" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="37.13671875" />
+            <TextField id="login" fx:id="login" promptText="insira o login" />
+            <Text fx:id="text2" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" />
+            <TextField fx:id="senha" promptText="insira a senha" />
+            <Button id="botaoConfirma" fx:id="botaoconfirma" mnemonicParsing="false" onAction="#logarCliente" text="Confirmar" />
+         </children>
+      </VBox>
+      <Button layoutX="495.0" layoutY="332.0" mnemonicParsing="false" text="voltar" />
+      <Label fx:id="alertalogin" layoutX="203.0" layoutY="174.0" prefHeight="17.0" prefWidth="221.0" text="message">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
    </children>
 </AnchorPane>

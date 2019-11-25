@@ -6,13 +6,14 @@ import java.util.ArrayList;
 
 
 public class NotaFiscal implements Serializable{
-    private String idCliente;
+    private long idCliente;
     private ArrayList<Produto> compras;
     private LocalDate dataCompra;
  
-    public NotaFiscal(String id) {
+    public NotaFiscal(long id) {
         this.idCliente = id;
         this.dataCompra = LocalDate.now();
+        this.compras = new ArrayList<>();
     }
     
     public ArrayList<Produto> getCompras() {
@@ -20,6 +21,7 @@ public class NotaFiscal implements Serializable{
     }
 
     public void NotaAdicionaProduto(Produto produto) {
+       if(produto!= null)
         this.compras.add(produto);
     }
    
@@ -31,17 +33,16 @@ public class NotaFiscal implements Serializable{
         return total;
     }
     
-    public String getIdCliente() {
+    public long getIdCliente() {
         return this.idCliente;
     }
-    
-  
-    
+      
+    @Override
     public String toString() {
         String s = "id cliente :" + this.idCliente + "\n";
-        s += "data compra: " + this.dataCompra + "\n ";
+        s += "data compra: " + this.dataCompra + "\n";
         for(Produto p : this.compras) {
-            s += "nome produto " + p.getNome() + " preco" + p.getPreco() + "\n";
+            s += "nome produto: " + p.getNome() + ", preco: " + p.getPreco() + "\n";
         }
         s +="total compras : " + getTotalCompras();
         return s;

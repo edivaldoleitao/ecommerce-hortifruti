@@ -116,5 +116,12 @@ public class ControladorUsuario {
             return lista;
     }
 
-
+    public ContaCliente buscarCliente(String login) throws ElementoNaoExisteException {
+        for(ContaUsuario conta : this.repositorioUsuarios.listar()) {
+            if(conta instanceof ContaCliente)
+                if(conta.getLogin().equals(login))
+                    return (ContaCliente) conta;
+        }
+        throw new ElementoNaoExisteException(login);
+    }
 }

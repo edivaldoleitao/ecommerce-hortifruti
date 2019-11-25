@@ -1,6 +1,7 @@
 
 package projeto2va.gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -8,17 +9,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import projeto2va.exceptions.ElementoJaExisteException;
 import projeto2va.exceptions.LoginJaExisteException;
-import projeto2va.negocio.ControladorUsuario;
+import projeto2va.negocio.Fachada;
 import projeto2va.negocio.beans.ContaCliente;
-import projeto2va.negocio.beans.ContaUsuario;
+
 
 
 public class CadastroClienteController implements Initializable {
     
-    private ControladorUsuario controlador = ControladorUsuario.getInstance();
+    private Fachada fachada = Fachada.getInstance();
     
     @FXML
     private Label label;
@@ -50,6 +52,9 @@ public class CadastroClienteController implements Initializable {
     @FXML 
     private Button voltarTela;
     
+    @FXML 
+    private Pane cadastroPane;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -59,8 +64,8 @@ public class CadastroClienteController implements Initializable {
     
     public void cadastrarButton() {
         try {
-            ContaUsuario u = new ContaCliente(nome.getText(), senha.getText(), Login.getText());
-            controlador.inserirUsuario(u);
+            ContaCliente u = new ContaCliente(nome.getText(), senha.getText(), Login.getText());
+            fachada.inserirUsuario(u);
             confirmacaoCadastro.setText("Cadastro realizado!!");
             alertaLogin.setText("");
         }
@@ -70,4 +75,19 @@ public class CadastroClienteController implements Initializable {
         }
     }
     
+    public void voltarTela() throws IOException{
+        try {
+        ScreenManager manager = ScreenManager.getInstance();
+        nome.setText("");
+        senha.setText("");
+        Login.setText("");
+        alertaLogin.setText("");
+        Hortifruti_App.setStage(manager.getMainScene());
+        Hortifruti_App.setTitle("E-commece hortifruti");
+        }
+        catch(IOException ex) {
+            ex.printStackTrace();
+        }
+    } 
+            
 }

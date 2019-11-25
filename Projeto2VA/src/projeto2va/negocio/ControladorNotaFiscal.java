@@ -2,7 +2,6 @@
 package projeto2va.negocio;
 import projeto2va.dados.*;
 import projeto2va.negocio.beans.NotaFiscal;
-import java.time.*;
 import java.util.ArrayList;
 import projeto2va.exceptions.*;
 import projeto2va.negocio.beans.Produto;
@@ -26,11 +25,11 @@ public class ControladorNotaFiscal {
         this.repositorioNotaFiscal.inserirR(nota);
     }
     
-    public ArrayList<NotaFiscal> listarPorId(String id) throws ElementoNaoExisteException{
-        if(id!= null) {
+    public ArrayList<NotaFiscal> listarPorId(long id) throws ElementoNaoExisteException{
+        if(id > 0) {
             ArrayList<NotaFiscal> lista = new ArrayList<>();
             for(NotaFiscal nota : this.repositorioNotaFiscal.listar()) {
-                if(nota.getIdCliente().equals(id))
+                if(nota.getIdCliente() == id)
                     lista.add(nota);
             }
             if(lista == null)
@@ -41,7 +40,7 @@ public class ControladorNotaFiscal {
         throw new ElementoNaoExisteException(id);
     }
  
-    public ArrayList<Produto> recomendarProdutos(String id) throws ElementoNaoExisteException {
+    public ArrayList<Produto> recomendarProdutos(long id) throws ElementoNaoExisteException {
         ArrayList<NotaFiscal> lista = this.listarPorId(id);
         ArrayList<Produto>listaP  = new ArrayList<>();
         if(lista!= null && !lista.isEmpty()) {

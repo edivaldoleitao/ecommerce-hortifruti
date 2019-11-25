@@ -23,7 +23,7 @@ public class ControladorProdutos {
     }
     
     public void inserirProdutos(Produto produto) throws ElementoJaExisteException{
-        if(produto!= null) {
+        if(produto!= null && produto.getPreco() > 0) {
             List<Produto> lista = this.repositorioProdutos.listar();
             boolean existe = false;
             for(Produto p : lista) {
@@ -50,7 +50,7 @@ public class ControladorProdutos {
   
     
     public void alterarPreco(Produto produto, float preco) throws ElementoNaoExisteException {
-        if(produto!= null) {
+        if(produto!= null && preco > 0 ) {
             produto.setPreco(preco);
             this.repositorioProdutos.atualizar(produto);
         }

@@ -49,7 +49,7 @@ public abstract class ContaUsuario implements Serializable {
     }
 
     public long getId() {
-        return id;
+        return this.id;
     }
     
     public boolean equals(ContaUsuario u){

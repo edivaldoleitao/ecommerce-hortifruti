@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import projeto2va.exceptions.ElementoNaoExisteException;
@@ -27,7 +28,7 @@ public class LoginClienteController implements Initializable {
     private TextField login;
 
     @FXML
-    private TextField senha;
+    private PasswordField senha;
 
     @FXML
     private Button botaoconfirma;
@@ -51,15 +52,20 @@ public class LoginClienteController implements Initializable {
         // TODO
     }    
     
-    public void logarCliente() throws IOException {
+    public ContaCliente logarCliente() throws IOException, ElementoNaoExisteException {
+        ContaCliente conta = null;
         try {
-        ContaCliente c;
-        c = Fachada.getInstance().loginCliente(login.getText(), senha.getText());
-        Fachada.setConta(c);
+        ContaCliente c1;
+        c1 = Fachada.getInstance().loginCliente(login.getText(), senha.getText());
+        Fachada.getInstance().setConta(c1);
+        conta = c1;
         alertalogin.setText("");
         alertasenha.setText("");
+        if(c1!= null) {
         Hortifruti_App.setStage(ScreenManager.getInstance().getTelaclientescene());
+        ScreenManager.getInstance().getTelaclientecontroller().setLabel("Bem-Vindo " + c1.getNome() + "!!");
         Hortifruti_App.setTitle("Tela Cliente");
+        }
         }
         catch(ElementoNaoExisteException |  UsuarioInexistenteException | UsuarioBloqueadoException ex) {
             alertalogin.setText(ex.getMessage());
@@ -67,6 +73,25 @@ public class LoginClienteController implements Initializable {
         catch(SenhaIncorretaException ex) {
             alertasenha.setText(ex.getMessage());
             alertalogin.setText("");
+        }
+        if(conta!= null)
+            return conta;
+        else 
+            throw  new ElementoNaoExisteException(conta);
+    }
+    
+        public void voltarTela() throws IOException {
+        try {
+             ScreenManager manager = ScreenManager.getInstance();
+             login.setText("");
+             senha.setText("");
+             alertalogin.setText("");
+             alertasenha.setText("");
+             Hortifruti_App.setStage(manager.getMainScene());
+             Hortifruti_App.setTitle("E-commece hortifruti");
+        }
+        catch(IOException ex) {
+            ex.printStackTrace();
         }
     }
     

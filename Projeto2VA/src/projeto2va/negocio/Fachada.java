@@ -6,7 +6,8 @@ import projeto2va.exceptions.*;
 import projeto2va.negocio.beans.*;
 
 public class Fachada {
-    private static ContaCliente conta = null;
+    
+    private static ContaCliente conta ;
     private static Fachada instance;
     private ControladorUsuario controladorusuario;
     private ControladorProdutos controladorprodutos;
@@ -25,14 +26,14 @@ public class Fachada {
         this.controladorusuario = ControladorUsuario.getInstance();
     }
     
-    public static ContaCliente getConta() throws ElementoNaoExisteException {
+    public  ContaCliente getConta() throws ElementoNaoExisteException {
         if(conta!= null)
             return conta;
         else 
             throw new ElementoNaoExisteException(conta);
     }
     
-    public static void setConta(ContaCliente c) {
+    public  void setConta(ContaCliente c) {
         if(c!= null)
             conta = c;
     }

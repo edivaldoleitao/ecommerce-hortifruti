@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -21,7 +22,7 @@
             <Text fx:id="tex1" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
             <TextField fx:id="login" promptText="insira o login" />
             <Text fx:id="text2" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha" wrappingWidth="45.13671875" />
-            <TextField fx:id="senha" promptText="insira a  senha" />
+            <PasswordField fx:id="senha" promptText="senha" />
             <Button fx:id="botaoconfirma" mnemonicParsing="false" onAction="#LoginAdmin" text="Confirmar" />
          </children>
       </VBox>

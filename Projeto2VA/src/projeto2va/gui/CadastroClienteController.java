@@ -82,6 +82,7 @@ public class CadastroClienteController implements Initializable {
         senha.setText("");
         Login.setText("");
         alertaLogin.setText("");
+        confirmacaoCadastro.setText("");
         Hortifruti_App.setStage(manager.getMainScene());
         Hortifruti_App.setTitle("E-commece hortifruti");
         }

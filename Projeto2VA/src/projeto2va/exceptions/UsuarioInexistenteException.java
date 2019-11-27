@@ -1,7 +1,7 @@
 
 package projeto2va.exceptions;
 
-import projeto2va.negocio.beans.ContaUsuario;
+
 
 
 public class UsuarioInexistenteException extends Exception{
@@ -9,7 +9,7 @@ public class UsuarioInexistenteException extends Exception{
     private Object conta;
 
     public UsuarioInexistenteException(Object conta) {
-        super("usuaario nao existe no repositorio");
+        super("usuario nao existe !!");
         this.conta = conta;
     }
 

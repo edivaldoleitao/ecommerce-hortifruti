@@ -41,7 +41,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <ComboBox fx:id="combobox" layoutX="438.0" layoutY="163.0" onAction="#adicionacombobox" prefWidth="150.0" />
+      <ComboBox fx:id="combobox" layoutX="417.0" layoutY="163.0" onAction="#adicionacombobox" prefWidth="150.0" />
       <Text layoutX="438.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista Produtos">
          <font>
             <Font size="14.0" />
@@ -58,5 +58,7 @@
          </font>
       </Label>
       <Button layoutX="201.0" layoutY="188.0" mnemonicParsing="false" onAction="#removerProdutos" text="&lt;&lt;" />
+      <TextArea fx:id="produtospec" layoutX="580.0" layoutY="182.0" opacity="0.7" prefHeight="159.0" prefWidth="132.0" />
+      <Text layoutX="600.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Detalhe Produto" />
    </children>
 </AnchorPane>

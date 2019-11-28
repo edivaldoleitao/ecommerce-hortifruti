@@ -41,12 +41,15 @@ public class TelaClienteController implements Initializable {
     @FXML
     private Label totalcompras;
     
+    @FXML
+    private TextArea produtospec;
+    
     private Fachada fachada = Fachada.getInstance();
     private ArrayList<Produto> lista  = new ArrayList<>();
     private ArrayList<Produto> listacarrinho2 =  new ArrayList<>();
     private String s = "";
     private List<Produto> produtoslista;
-    private double total ;
+    private float total ;
     
     @Override   
     public void initialize(URL url, ResourceBundle rb) {
@@ -135,9 +138,10 @@ public class TelaClienteController implements Initializable {
         
     }
     
-    public void adicionacombobox() {
+    public void adicionacombobox() throws ElementoNaoExisteException {
        pesquisarhortalica.setText(combobox.getValue().toString());
        quantidade.setText("1");
+       produtospec.setText(fachada.buscarProduto(combobox.getValue().toString()).toString());
     }
     
     public void setLabel(String nome) {

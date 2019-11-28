@@ -1,9 +1,10 @@
 package projeto2va.negocio.beans;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+import java.math.*;
 
 public class NotaFiscal implements Serializable{
     private long idCliente;
@@ -42,9 +43,12 @@ public class NotaFiscal implements Serializable{
         String s = "id cliente :" + this.idCliente + "\n";
         s += "data compra: " + this.dataCompra + "\n";
         for(Produto p : this.compras) {
-            s += "nome produto: " + p.getNome() + ", preco: " + p.getPreco() + "\n";
+            s += "nome produto: " + p.getNome() + ", preco: " + p.getPreco() + "Reais" + "\n";
         }
-        s +="total compras : " + getTotalCompras();
+        double soma = Math.floor(getTotalCompras());
+        
+
+        s +="total compras : " + soma + " Reais";
         return s;
     }
     

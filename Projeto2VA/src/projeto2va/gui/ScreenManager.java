@@ -34,6 +34,8 @@ public class ScreenManager {
     private TelaClienteController telaclientecontroller;
     private Scene telaclientescene;
     
+    private TelaNotaFiscalController telanotacontroller;
+    private Scene telanotascene;
     
     
     private ScreenManager()  {
@@ -79,6 +81,10 @@ public class ScreenManager {
            this.telaclientescene = new Scene(telaclientePane);
            this.telaclientecontroller = (TelaClienteController) fxmlloader.getController();   
        
+           fxmlloader = new FXMLLoader();
+           AnchorPane telanotaPane = fxmlloader.load(getClass().getResource("telaNotaFiscal.fxml").openStream());
+           this.telanotascene = new Scene(telanotaPane);
+           this.telanotacontroller = (TelaNotaFiscalController) fxmlloader.getController();          
        }
        catch(IOException ex) {
            ex.printStackTrace();
@@ -141,6 +147,14 @@ public class ScreenManager {
 
     public Scene getTelaclientescene() {
         return telaclientescene;
+    }
+
+    public TelaNotaFiscalController getTelanotacontroller() {
+        return telanotacontroller;
+    }
+
+    public Scene getTelanotascene() {
+        return telanotascene;
     }
 
 

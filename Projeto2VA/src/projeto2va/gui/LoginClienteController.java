@@ -61,6 +61,8 @@ public class LoginClienteController implements Initializable {
         conta = c1;
         alertalogin.setText("");
         alertasenha.setText("");
+        senha.setText("");
+        login.setText("");
         if(c1!= null) {
         Hortifruti_App.setStage(ScreenManager.getInstance().getTelaclientescene());
         ScreenManager.getInstance().getTelaclientecontroller().setLabel("Bem-Vindo " + c1.getNome() + "!!");

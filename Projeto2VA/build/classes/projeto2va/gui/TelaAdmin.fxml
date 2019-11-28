@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -11,15 +13,20 @@
 
 <AnchorPane id="AnchorPane" prefHeight="471.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto2va.gui.TelaAdminController">
    <children>
+      <ImageView fitHeight="571.0" fitWidth="753.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/Win10/Documents/NetBeansProjects/E-commerce/Projeto2VA/src/projeto2va/image/100151.jpg" />
+         </image>
+      </ImageView>
       <Text fx:id="text1" layoutX="24.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem Vindo!" wrappingWidth="100.435546875">
          <font>
             <Font size="21.0" />
          </font>
       </Text>
-      <Button fx:id="logout" layoutX="443.0" layoutY="35.0" mnemonicParsing="false" text="Log Out" />
+      <Button fx:id="logout" layoutX="671.0" layoutY="75.0" mnemonicParsing="false" onAction="#voltarTela" text="Log Out" />
       <HBox layoutX="3.0" layoutY="135.0" prefHeight="172.0" prefWidth="680.0" spacing="50.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="177.0" prefWidth="166.0" spacing="10.0">
+            <VBox prefHeight="177.0" prefWidth="166.0" spacing="10.0">
                <children>
                   <Text fx:id="text3" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserir Produto">
                      <font>
@@ -46,7 +53,7 @@
                   </Text>
                   <TextField fx:id="nomePreco" promptText="Nome Produto" />
                   <TextField fx:id="valorPreco" promptText="Novo Preço" />
-                  <Button fx:id="buttonAlteraPreco" mnemonicParsing="false" text="Alterar" />
+                  <Button fx:id="buttonAlteraPreco" mnemonicParsing="false" onAction="#alterarPreco" text="Alterar" />
                   <Label fx:id="Alertapreco" prefHeight="25.0" prefWidth="183.0" text="message">
                      <font>
                         <Font size="16.0" />
@@ -54,7 +61,7 @@
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="177.0" prefWidth="158.0" spacing="10.0">
+            <VBox prefHeight="177.0" prefWidth="158.0" spacing="10.0">
                <children>
                   <Text fx:id="text4" strokeType="OUTSIDE" strokeWidth="0.0" text="Remover Produto">
                      <font>
@@ -62,7 +69,7 @@
                      </font>
                   </Text>
                   <TextField fx:id="nomeProduto" promptText="Nome Produto" />
-                  <Button fx:id="buttonRemoveP" alignment="TOP_CENTER" mnemonicParsing="false" text="Remover" />
+                  <Button fx:id="buttonRemoveP" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#removerProduto" text="Remover" />
                   <Label fx:id="AlertaRemover" prefHeight="25.0" prefWidth="162.0" text="message" textAlignment="CENTER">
                      <font>
                         <Font size="16.0" />
@@ -72,6 +79,6 @@
             </VBox>
          </children>
       </HBox>
-      <Button layoutX="537.0" layoutY="35.0" mnemonicParsing="false" text="gerenciar contas" />
+      <Button layoutX="630.0" layoutY="31.0" mnemonicParsing="false" text="Gerenciar Contas" />
    </children>
 </AnchorPane>

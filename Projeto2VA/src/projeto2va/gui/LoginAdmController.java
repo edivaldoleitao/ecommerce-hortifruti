@@ -50,6 +50,10 @@ public class LoginAdmController implements Initializable {
         
         if(login.getText().equals(contaAdmin.LOGIN.getString())) {
             if(senha.getText().equals(contaAdmin.SENHA.getString())) {
+                login.setText("");
+                senha.setText("");
+                alertaLogin.setText("");
+                alertaSenha.setText("");
                 Hortifruti_App.setStage(ScreenManager.getInstance().getTelaadminscene());
                 Hortifruti_App.setTitle("tela Administrador");
             }

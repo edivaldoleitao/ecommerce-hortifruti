@@ -153,12 +153,21 @@ public class TelaClienteController implements Initializable {
              ScreenManager manager = ScreenManager.getInstance();
              labelc.setText("");
              alertacompra.setText("");
+             produtospec.setText("");
              Hortifruti_App.setStage(manager.getLoginclientescene());
              Hortifruti_App.setTitle("Login Cliente");
         }
         catch(IOException ex) {
             ex.printStackTrace();
         }
+    }
+        
+    public void atualizarCombobox() {
+        combobox.getItems().clear();
+        for(Produto p : produtoslista) {
+         
+         this.combobox.getItems().add(p.getNome());
+        }        
     }
 
 }

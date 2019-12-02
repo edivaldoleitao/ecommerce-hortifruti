@@ -9,10 +9,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 import projeto2va.exceptions.ElementoJaExisteException;
 import projeto2va.exceptions.ElementoNaoExisteException;
 import projeto2va.negocio.Fachada;
 import projeto2va.negocio.beans.Produto;
+import javafx.scene.control.ComboBox;
 
 public class TelaAdminController implements Initializable{
 
@@ -67,6 +69,12 @@ public class TelaAdminController implements Initializable{
     @FXML
     private Button buttonAlteraPreco;
     
+    @FXML
+    private TextArea produtospec;
+    
+    @FXML
+    private ComboBox combobox;
+    
     Fachada fachada = Fachada.getInstance();
     
     @Override
@@ -74,6 +82,11 @@ public class TelaAdminController implements Initializable{
         AlertaInserir.setText("");
         AlertaRemover.setText("");
         Alertapreco.setText("");
+        produtospec.setText("");
+        combobox.getItems().clear();
+        for(Produto p : fachada.listarProdutos()) {
+            combobox.getItems().add(p.getNome());
+        }
     }
 
     public void inserirProduto() {
@@ -82,14 +95,20 @@ public class TelaAdminController implements Initializable{
             Produto produto = new Produto(nomeProdutoInserir.getText(),preco,tipoProdutoInserir.getText());
            if(preco > 0) {
             Fachada.getInstance().inserirProduto(produto);
-           AlertaInserir.setText("produto cadastrado!!");
-           AlertaRemover.setText("");
-           Alertapreco.setText("");
+            AlertaInserir.setText("produto cadastrado!!");
+            AlertaRemover.setText("");
+            Alertapreco.setText("");
+            ScreenManager.getInstance().getTelaclientecontroller().atualizarCombobox();
+            this.combobox.getItems().clear();
+            for(Produto p : fachada.listarProdutos()) {
+                combobox.getItems().add(p.getNome());
+            }
            }
-           else 
+           else {
                AlertaInserir.setText("preco invalido!!");
                AlertaRemover.setText("");
                Alertapreco.setText("");
+           }
         }
         catch(ElementoJaExisteException ex) {
            AlertaInserir.setText("Produto ja existe!!");
@@ -140,6 +159,11 @@ public class TelaAdminController implements Initializable{
             AlertaRemover.setText("Produto Removido!");
             AlertaInserir.setText("");
             Alertapreco.setText("");
+            ScreenManager.getInstance().getTelaclientecontroller().atualizarCombobox();
+            combobox.getItems().clear();
+            for(Produto p : fachada.listarProdutos()) {
+                combobox.getItems().add(p.getNome());
+            }           
         }
         catch(ElementoNaoExisteException e) {
             AlertaRemover.setText("Produto nao existe!");
@@ -148,7 +172,13 @@ public class TelaAdminController implements Initializable{
         }
     }
         
-        
-        
+    public void selecionarcombobox() throws ElementoNaoExisteException {
+        nomePreco.setText(combobox.getValue().toString());
+        nomeProduto.setText(combobox.getValue().toString());
+        produtospec.setText(fachada.buscarProduto(combobox.getValue().toString()).toString());    
+    }
+    
+    
+
 
 }

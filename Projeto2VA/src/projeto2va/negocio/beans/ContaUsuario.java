@@ -58,6 +58,12 @@ public abstract class ContaUsuario implements Serializable {
            b = true;
         return b;
     }
+
+    @Override
+    public String toString() {
+        return "ContaUsuario{" + "Nome=" + Nome + ", senha=" + senha + ", login=" + login + ", id=" + id + '}';
+    }
+    
     
     
 }

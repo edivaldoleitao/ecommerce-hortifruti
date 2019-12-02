@@ -37,6 +37,9 @@ public class ScreenManager {
     private TelaNotaFiscalController telanotacontroller;
     private Scene telanotascene;
     
+
+    
+    
     
     private ScreenManager()  {
        this.initialize();
@@ -84,7 +87,9 @@ public class ScreenManager {
            fxmlloader = new FXMLLoader();
            AnchorPane telanotaPane = fxmlloader.load(getClass().getResource("telaNotaFiscal.fxml").openStream());
            this.telanotascene = new Scene(telanotaPane);
-           this.telanotacontroller = (TelaNotaFiscalController) fxmlloader.getController();          
+           this.telanotacontroller = (TelaNotaFiscalController) fxmlloader.getController();
+          
+         
        }
        catch(IOException ex) {
            ex.printStackTrace();
